@@ -29,7 +29,7 @@ void SmartMF::readHardwareRevision()
     revision += (uint8_t)digitalRead(SmartMF_HardwareRevision_PIN2) << 1;
     revision += (uint8_t)digitalRead(SmartMF_HardwareRevision_PIN3) << 0;
 
-    openknx.log("SmartMF", "Revision %i", revision);
+    logDebug("SmartMF", "Revision %i", revision);
 
     _hardwareRevision = revision;
 }
@@ -46,7 +46,7 @@ void SmartMF::readHardwareVariant()
 
     uint32_t variantRaw = analogRead(SmartMF_HardwareVariant_PIN);
     _hardwareVariant = mapHardwareVariant(variantRaw);
-    openknx.log("SmartMF", "Variant %i (%i)", _hardwareVariant, variantRaw);
+    logDebug("SmartMF", "Variant %i (%i)", _hardwareVariant, variantRaw);
 }
 
 uint8_t SmartMF::mapHardwareVariant(uint32_t value)
