@@ -1,13 +1,14 @@
 #pragma once
-#include "OpenKNX.h"
+#include "Arduino.h"
+#include "hardware.h"
 
 #ifdef SmartMF_HardwareVariant_PIN
 #define SmartMF_HardwareVariant
 #endif
 
-#ifdef SmartMF_HardwareRevision_PIN1
-#ifdef SmartMF_HardwareRevision_PIN2
-#ifdef SmartMF_HardwareRevision_PIN3
+#ifdef SmartMF_HardwareRevision_ID1
+#ifdef SmartMF_HardwareRevision_ID2
+#ifdef SmartMF_HardwareRevision_ID3
 #define SmartMF_HardwareRevision
 #endif
 #endif
