@@ -20,14 +20,14 @@ void SmartMF::init()
 #ifdef SmartMF_HardwareRevision
 void SmartMF::readHardwareRevision()
 {
-    pinMode(SmartMF_HardwareRevision_ID1, INPUT_PULLUP);
-    pinMode(SmartMF_HardwareRevision_ID2, INPUT_PULLUP);
-    pinMode(SmartMF_HardwareRevision_ID3, INPUT_PULLUP);
+    pinMode(SmartMF_HardwareRevision_PIN1, INPUT_PULLUP);
+    pinMode(SmartMF_HardwareRevision_PIN2, INPUT_PULLUP);
+    pinMode(SmartMF_HardwareRevision_PIN3, INPUT_PULLUP);
 
     uint8_t revision = 1;
-    revision += (uint8_t)digitalRead(SmartMF_HardwareRevision_ID1) << 0;
-    revision += (uint8_t)digitalRead(SmartMF_HardwareRevision_ID2) << 1;
-    revision += (uint8_t)digitalRead(SmartMF_HardwareRevision_ID3) << 2;
+    revision += (uint8_t)digitalRead(SmartMF_HardwareRevision_PIN1) << 0;
+    revision += (uint8_t)digitalRead(SmartMF_HardwareRevision_PIN2) << 1;
+    revision += (uint8_t)digitalRead(SmartMF_HardwareRevision_PIN3) << 2;
 
     logDebug("SmartMF", "Revision %i", revision);
 
