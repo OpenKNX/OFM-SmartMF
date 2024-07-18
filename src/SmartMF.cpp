@@ -1,7 +1,9 @@
 #include "SmartMF.h"
+#include "OpenKNX.h"
 
 SmartMF::SmartMF()
-{}
+{
+}
 
 /*
  * Read hardware variant if pin are defined
