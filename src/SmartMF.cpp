@@ -1,9 +1,9 @@
 #include "SmartMF.h"
 #include "OpenKNX.h"
 
-SmartMF::SmartMF()
-{
-}
+// SmartMF::SmartMF()
+// {
+// }
 
 /*
  * Read hardware variant if pin are defined
@@ -17,6 +17,27 @@ void SmartMF::init()
 #ifdef SmartMF_HardwareVariant
     readHardwareVariant();
 #endif
+
+#ifdef I2C_RGBLED_DEVICE_ADDRESS
+    _RgbLed = new RgbLed();
+    _RgbLed->init();
+    openknx.leds.addLed(_RgbLed, OpenKNX::Led::LED_TYPE_INFO1); 
+    // for (uint8_t i = OpenKNX::Led::LED_TYPE_INFO1; i <= OpenKNX::Led::LED_TYPE_INFO3; i++)
+    // {
+    //     if (!openknx.leds.getLed(i))
+    //     {
+    //         _RgbLed = new RgbLed();
+    //         _RgbLed->init();
+    //         openknx.leds.addLed(_RgbLed, i); 
+    //         break;
+    //     }
+    // }
+#endif
+}
+
+void SmartMF::loop(bool configured)
+{
+    if (_RgbLed) _RgbLed->ownLoop();
 }
 
 #ifdef SmartMF_HardwareRevision
@@ -93,6 +114,10 @@ uint8_t SmartMF::hardwareVariant()
 {
     return _hardwareVariant;
 }
+
+// const std::string version() {
+//     return MODULE_SmartMF_Version;
+// }
 
 /* SmartFM Instance */
 SmartMF smartmf;

@@ -1,5 +1,6 @@
 #pragma once
 #include "OpenKNX.h"
+#include "RgbLed.h"
 
 #ifdef SmartMF_HardwareVariant_PIN
 #define SmartMF_HardwareVariant
@@ -13,12 +14,12 @@
 #endif
 #endif
 
-class SmartMF
+class SmartMF : public OpenKNX::Module
 {
   protected:
     uint8_t _hardwareVariant = 0;
     uint8_t _hardwareRevision = 0;
-
+    RgbLed *_RgbLed = nullptr;
 #ifdef SmartMF_HardwareVariant
     uint8_t mapHardwareVariant(uint32_t value);
     void readHardwareVariant();
@@ -28,11 +29,15 @@ class SmartMF
 #endif
 
   public:
-    SmartMF();
+    SmartMF() {};
 
-    void init();
     uint8_t hardwareVariant();
     uint8_t hardwareRevision();
+    
+    const std::string version() override { return MODULE_SmartMF_Version; }
+    virtual const std::string name() override { return "SmartMF"; };
+    virtual void init() override;
+    virtual void loop(bool configured) override;
 };
 
 extern SmartMF smartmf;
