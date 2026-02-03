@@ -44,7 +44,7 @@ void RgbLed::powerSave(bool active) {
     _powerSave = active;
 }
 
-void RgbLed::setColor(uint8_t r, uint8_t g, uint8_t b) {
+void RgbLed::color(uint8_t r, uint8_t g, uint8_t b) {
     // Implementation for setting RGB color can be added here
     _Red = r;
     _Green = g;

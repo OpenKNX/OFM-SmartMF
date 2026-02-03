@@ -24,7 +24,7 @@ class RgbLed : public OpenKNX::Led::RGB
         // virtual bool isRGB() override { return true; }
         // virtual void setColor(OpenKNX::Led::Color color) override;
         // virtual void setColor(uint32_t rgb) override;
-        virtual void setColor(uint8_t r, uint8_t g, uint8_t b) override;
+        virtual void color(uint8_t r, uint8_t g, uint8_t b) override;
         
         virtual void ownLoop();
     };
